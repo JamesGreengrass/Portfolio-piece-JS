@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <title>Image Generator And Email Assigner</title>
+        <!-- Normalize, CSS stylesheets -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header>
+            <h1>Random Image Generator And Email Assigner</h1>
+        </header>
+        <!-- Main Content -->
+        <main>
+            <div class="img-container" id="img-container">
+                <button onclick="load_pic()">Generate New Image</button>
+                <img src="https://picsum.photos/300/400" id="image">
+            </div>
+            <div class="input-container">
+                <form name="myForm" onsubmit="return validateForm()">
+                    <label for="email">Enter an email address to be assigned to the image above:</label>
+                    <input type="email" id="email" name="email">
+                    <input type="submit" value="Submit" id="submit" onclick="">
+                </form>
+            </div>
+        </main>
+        <!-- jQuery, JavaScript and Plugins -->
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
