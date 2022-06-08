@@ -38,17 +38,31 @@ async function load_pic() {
 
 let emailImages = [];
 
-const addEmail = (ev) => {
+function addEmail(ev) {
     ev.preventDefault();
 
     let emailImage = {
         email: document.getElementById('email').value,
-        image: imageObjectURL
+        image: document.getElementById('image').src
     }
+
     emailImages.push(emailImage);
     document.forms[0].reset();
-    console.log(emailImage);
+    console.log(emailImage.image);
     localStorage.setItem('EmailImageList', JSON.stringify(emailImages));
+    let imgOutput = document.querySelector('#img-output');
+    imgOutput.src = emailImage.image;
+
+}
+
+function view() {
+    if(localStorage.getItem('EmailImageList') != null) {
+
+        let output = document.querySelector('.output');
+        let imgOutput = document.querySelector('#img-output');
+        console.log(emailImage);
+        
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () =>{
