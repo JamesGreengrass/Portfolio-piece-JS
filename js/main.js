@@ -1,12 +1,34 @@
+let emailImages = new Array();
 
-function validateForm() {
+function validateForm(ev) {
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     
     if (email.value.match(validRegex)) {
+        ev.preventDefault();
         alert("Email successfully assigned to image!");
+
+        let emailImage = {
+            email: document.getElementById('email').value,
+            image: document.getElementById('image').src
+        }
+    
+        emailImages.push(emailImage);
+        document.forms[0].reset();
+        localStorage.setItem('EmailImageList', JSON.stringify(emailImages));
+    
+        let output = document.querySelector('.output');
+        let emailOutput = document.createElement('p');
+        let imgOutput = document.createElement('img');
+        output.appendChild(emailOutput);
+        output.appendChild(imgOutput);
+        imgOutput.src = emailImage.image;
+        emailOutput.innerHTML = emailImage.email;
+        console.log(emailImages);
+
         return false;
-    } else {
-        alert("Invalid email address!");
+    }  else {
+        ev.preventDefault();
+        alert("No valid email address detected");
         return false;
     }
 }
@@ -36,35 +58,6 @@ async function load_pic() {
     }
 }
 
-let emailImages = [];
-
-function addEmail(ev) {
-    ev.preventDefault();
-
-    let emailImage = {
-        email: document.getElementById('email').value,
-        image: document.getElementById('image').src
-    }
-
-    emailImages.push(emailImage);
-    document.forms[0].reset();
-    console.log(emailImage.image);
-    localStorage.setItem('EmailImageList', JSON.stringify(emailImages));
-    let imgOutput = document.querySelector('#img-output');
-    imgOutput.src = emailImage.image;
-
-}
-
-function view() {
-    if(localStorage.getItem('EmailImageList') != null) {
-
-        let output = document.querySelector('.output');
-        let imgOutput = document.querySelector('#img-output');
-        console.log(emailImage);
-        
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () =>{
-    document.getElementById('submit').addEventListener('click', addEmail);
+    document.getElementById('submit').addEventListener('click', validateForm);
 });

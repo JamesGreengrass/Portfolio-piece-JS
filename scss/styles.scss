@@ -1,3 +1,7 @@
+// Imports
+
+@import 'mixins.scss';
+
 // Base Styles
 
 body {
@@ -37,11 +41,12 @@ main {
     display: flex;
     flex-direction: column;
     row-gap: 20px; 
-    top: 130px;
+    top: 45px;
 }
 
 .input-container {
-    top: 168px;
+    top: 66px;
+    text-align: center;
 }
 
 form {
@@ -49,6 +54,23 @@ form {
     flex-direction: column;
     justify-content: space-between;
     row-gap: 20px;
+}
+
+.output-flex {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    text-align: center;
+    padding-top: 6rem; 
+}
+
+.output {
+    text-align: center;
+}
+
+.output p {
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 // Media Queries
