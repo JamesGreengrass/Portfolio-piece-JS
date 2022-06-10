@@ -35,6 +35,10 @@ main {
     margin: 0 auto;
     width: fit-content;
     position: relative;
+    @include mQ(1300px) {
+        float: left;
+        clear: both;
+    }
 }
 
 .img-container {
@@ -42,6 +46,9 @@ main {
     flex-direction: column;
     row-gap: 20px; 
     top: 45px;
+    @include mQ(1300px) {
+        margin-left: 30px;
+    }
 }
 
 .input-container {
@@ -56,21 +63,52 @@ form {
     row-gap: 20px;
 }
 
+.title {
+    position: relative;
+    font-size: 30px;
+    top: 5rem;
+    text-align: center;
+}
+
 .output-flex {
     display: flex;
     flex-direction: column; 
     flex-wrap: wrap; 
     text-align: center;
-    padding-top: 6rem; 
+    padding-top: 7rem; 
+    @include mQ (1300px) {
+        padding-top: 1rem;
+        width: 800px;
+        float: right;
+        position: relative;
+        bottom: 20rem;
+    }
 }
 
 .output {
     text-align: center;
+    @include mQ(1300px) {
+        float: right;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.output img {
+    @include mQ(1300px) {
+        height: 100px;
+        width: 100px;
+    }
 }
 
 .output p {
     border: 1px solid black;
     border-radius: 3px;
+    @include mQ (1300px) {
+        width: 200px;
+        height: fit-content;
+    }
 }
 
 // Media Queries

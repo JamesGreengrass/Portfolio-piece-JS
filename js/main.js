@@ -7,23 +7,28 @@ function validateForm(ev) {
         ev.preventDefault();
         alert("Email successfully assigned to image!");
 
-        let emailImage = {
-            email: document.getElementById('email').value,
-            image: document.getElementById('image').src
-        }
+        let email = document.getElementById('email').value;
+        let img = document.getElementById('image').src;
+
+        emailImages[emailImages.length]= email;
+        emailImages[emailImages.length]= img;
     
-        emailImages.push(emailImage);
         document.forms[0].reset();
-        localStorage.setItem('EmailImageList', JSON.stringify(emailImages));
-    
+        localStorage.setItem('emailImages', JSON.stringify(emailImages));
+
+        
         let output = document.querySelector('.output');
-        let emailOutput = document.createElement('p');
-        let imgOutput = document.createElement('img');
+        let emailOutput = document.createElement('h2');
         output.appendChild(emailOutput);
+        emailOutput.innerHTML = email;
+
+        let imgOutput = document.createElement('img');
         output.appendChild(imgOutput);
-        imgOutput.src = emailImage.image;
-        emailOutput.innerHTML = emailImage.email;
-        console.log(emailImages);
+
+        for ( let x = 0; x < emailImages.length; x++) {
+            let a = emailImages[x];
+            imgOutput.src = a;
+        }
 
         return false;
     }  else {
