@@ -1,37 +1,58 @@
 let emailImages = new Array();
 
 function validateForm(ev) {
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    
-    if (email.value.match(validRegex)) {
+    var validRegex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+    let emailCheck = document.getElementById('email').value;
+
+    if (email.value.match(validRegex) && !emailImages.includes(emailCheck)) {
         ev.preventDefault();
         alert("Email successfully assigned to image!");
 
         let email = document.getElementById('email').value;
         let img = document.getElementById('image').src;
-
         emailImages[emailImages.length]= email;
         emailImages[emailImages.length]= img;
-    
-        document.forms[0].reset();
         localStorage.setItem('emailImages', JSON.stringify(emailImages));
 
-        
         let output = document.querySelector('.output');
         let emailOutput = document.createElement('h2');
+        // for ( let y = 0; y < emailImages.length; y++) {
+        //     let a = y;
+        //     emailOutput.id = a;
+        // }
         output.appendChild(emailOutput);
         emailOutput.innerHTML = email;
 
         let imgOutput = document.createElement('img');
         output.appendChild(imgOutput);
-
         for ( let x = 0; x < emailImages.length; x++) {
             let a = emailImages[x];
             imgOutput.src = a;
         }
 
         return false;
-    }  else {
+
+    } else if (email.value.match(validRegex) && emailImages.includes(emailCheck)) {
+        ev.preventDefault();
+        alert("Email successfully assigned to image!");
+
+        let email = document.getElementById('email').value;
+        let img = document.getElementById('image').src;
+        emailImages[emailImages.length]= email;
+        emailImages[emailImages.length]= img;
+        localStorage.setItem('emailImages', JSON.stringify(emailImages));
+
+        let emailMatch = document.getElementsByTagName('h2');
+        console.log(emailMatch);
+
+        let imgOutput = document.createElement('img');
+        emailMatch.appendChild(imgOutput);
+        for ( let x = 0; x < emailImages.length; x++) {
+            let a = emailImages[x];
+            imgOutput.src = a;
+        }
+        
+    } else {
         ev.preventDefault();
         alert("No valid email address detected");
         return false;

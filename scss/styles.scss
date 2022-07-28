@@ -118,3 +118,9 @@ form {
         font-size: 22px;
     }
 }
+
+@media (min-width: 375px) and (max-width: 657px) {
+    h1 {
+        font-size: 25px;
+    }
+}
