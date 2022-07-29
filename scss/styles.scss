@@ -23,12 +23,21 @@ h1 {
     color: white;
 } 
 
+h2 {
+    width: 100%;
+}
+
 main {
     background-color: #bdfff6;
     width: 90vw;
     height: 99vh;
     margin: 0 auto; 
 }
+
+img {
+    margin: 10px; 
+}
+
 
 .img-container,
 .input-container {
@@ -47,8 +56,8 @@ main {
     row-gap: 20px; 
     top: 45px;
     @include mQ(1300px) {
-        margin-left: 30px;
-    }
+        margin-left: 35px;
+    } 
 }
 
 .input-container {
@@ -61,6 +70,9 @@ form {
     flex-direction: column;
     justify-content: space-between;
     row-gap: 20px;
+    @include mQ(1300px) {
+        margin-left: 10px; 
+    }
 }
 
 .title {
@@ -72,7 +84,7 @@ form {
 
 .output-flex {
     display: flex;
-    flex-direction: column; 
+    flex-direction: row; 
     flex-wrap: wrap; 
     text-align: center;
     padding-top: 7rem; 
@@ -90,7 +102,7 @@ form {
     @include mQ(1300px) {
         float: right;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: wrap;
     }
 }

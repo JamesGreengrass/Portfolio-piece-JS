@@ -16,12 +16,9 @@ function validateForm(ev) {
 
         let output = document.querySelector('.output');
         let emailOutput = document.createElement('h2');
-        // for ( let y = 0; y < emailImages.length; y++) {
-        //     let a = y;
-        //     emailOutput.id = a;
-        // }
         output.appendChild(emailOutput);
         emailOutput.innerHTML = email;
+        emailOutput.setAttribute('id', email);
 
         let imgOutput = document.createElement('img');
         output.appendChild(imgOutput);
@@ -42,11 +39,9 @@ function validateForm(ev) {
         emailImages[emailImages.length]= img;
         localStorage.setItem('emailImages', JSON.stringify(emailImages));
 
-        let emailMatch = document.getElementsByTagName('h2');
-        console.log(emailMatch);
-
+        emailMatch = document.getElementById(email);
         let imgOutput = document.createElement('img');
-        emailMatch.appendChild(imgOutput);
+        emailMatch.insertAdjacentElement('afterend', imgOutput);
         for ( let x = 0; x < emailImages.length; x++) {
             let a = emailImages[x];
             imgOutput.src = a;
